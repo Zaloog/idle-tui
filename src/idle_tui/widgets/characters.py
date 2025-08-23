@@ -23,7 +23,7 @@ class Character(Label):
             f" {self.id}"
             "\n ( )"
             "\n-| |-"
-            "\n / \ "
+            "\n / \\ "
             f"\n{max(self.max_hp - self.damage, 0)}/{self.max_hp}"
         )
 
@@ -45,7 +45,7 @@ class Character(Label):
         if self.damage >= self.max_hp:
             match self.parent.id:
                 case _ if "you" in self.parent.id:
-                    self.update(f" {self.id}\n _(xx)|-|\_\n{0}/{self.max_hp}")
+                    self.update(f" {self.id}\n _(xx)|-|\\_\n{0}/{self.max_hp}")
                 case _:
                     self.update(f" {self.id}\n _/|-|(xx)_\n{0}/{self.max_hp}")
         else:
@@ -53,13 +53,25 @@ class Character(Label):
                 f" {self.id}"
                 "\n ( )"
                 "\n-| |-"
-                "\n / \ "
+                "\n / \\ "
                 f"\n{self.max_hp - self.damage}/{self.max_hp}"
             )
 
     @property
     def screen_offset(self):
         return self.screen.get_offset(self)
+
+    @property
+    def dead(self):
+        return self.damage >= self.max_hp
+
+    def im_dead(self):
+        self.notify(
+            title="This is not `The Walking Dead`",
+            message="I am [red]dead[/] I cant shoot!",
+            timeout=1.5,
+            severity="error",
+        )
 
 
 class Projectile(Label):
