@@ -1,0 +1,27 @@
+[project]
+name = "idle-tui"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Zaloog", email = "gramslars@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "textual>=5.3.0",
+]
+
+[project.scripts]
+idle-tui = "idle_tui:main"
+
+[build-system]
+requires = ["uv_build>=0.8.12,<0.9.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.3.0",
+    "pre-commit-uv>=4.1.4",
+    "pytest>=8.4.1",
+    "textual-dev>=1.7.0",
+]
