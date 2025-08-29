@@ -1,0 +1,15 @@
+name: Continuous Integration
+
+on:
+  push:
+  workflow_dispatch:  # Allow manually triggering the workflow
+
+permissions:
+  contents: read
+
+
+jobs:
+  ruffing:
+    - uses: astral-sh/ruff-action@v3
+    - run: ruff check --fix
+    - run: ruff format
