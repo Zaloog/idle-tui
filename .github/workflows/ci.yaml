@@ -10,6 +10,8 @@ permissions:
 
 jobs:
   ruffing:
-    - uses: astral-sh/ruff-action@v3
-    - run: ruff check --fix
-    - run: ruff format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: astral-sh/ruff-action@v3
+      - run: ruff check --fix
+      - run: ruff format
