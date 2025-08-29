@@ -13,15 +13,16 @@ class IdleApp(App):
         Binding("1", "shoot_p2", "Shoot P2"),
         Binding("2", "shoot_p1", "Shoot P1"),
         Binding("r", "reset", "Reset"),
+        Binding("q", "app.quit", "Quit"),
     ]
 
     def compose(self):
-        yield Footer(show_command_palette=False)
         with Horizontal():
             with CenterMiddle(id="field_you"):
                 yield Character(id="p1")
             with CenterMiddle(id="field_opponent"):
                 yield Character(id="p2")
+        yield Footer(show_command_palette=False)
 
     def action_shoot_p1(self):
         player = self.query_one("#p2", Character)

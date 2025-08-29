@@ -14,7 +14,7 @@ from textual.containers import CenterMiddle, Horizontal
 
 class Character(Label):
     app: "IdleApp"
-    max_hp: reactive[int] = reactive(20)
+    max_hp: reactive[int] = reactive(100)
     damage: reactive[int] = reactive(0)
 
     def on_mount(self):
@@ -110,7 +110,7 @@ class Projectile(Label):
             attribute="offset",
             value=self.target,
             duration=0.5,
-            easing="linear",
+            easing="in_out_elastic",
             on_complete=self.hit_target,
         )
 
@@ -120,7 +120,7 @@ class Projectile(Label):
             layer for layer in self.screen.styles.layers if layer != self.styles.layer
         ]
         self.screen.styles.layers = tuple(layers)
-        self.target_char.inflict_damage(3)
+        self.target_char.inflict_damage(amount=random.choice([1,2,3,4,5]))
 
 
 class Damage(Label):
@@ -128,7 +128,8 @@ class Damage(Label):
     DEFAULT_CSS = """
     Damage {
         layer:above;
-        background:red;
+        background:black;
+        color:red;
 
     }
     """

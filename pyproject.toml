@@ -1,6 +1,6 @@
 [project]
 name = "idle-tui"
-version = "0.1.0"
+version = "0.1.2"
 description = "Add your description here"
 readme = "README.md"
 authors = [
@@ -17,6 +17,9 @@ idle-tui = "idle_tui:main"
 [build-system]
 requires = ["uv_build>=0.8.12,<0.9.0"]
 build-backend = "uv_build"
+
+[tool.ruff]
+required-version = "0.12.10"
 
 [dependency-groups]
 dev = [
